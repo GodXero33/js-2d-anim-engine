@@ -1,0 +1,27 @@
+{
+  "name": "js-2d-anim-engine",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/GodXero33/js-2d-anim-engine#readme",
+  "bugs": {
+    "url": "https://github.com/GodXero33/js-2d-anim-engine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GodXero33/js-2d-anim-engine.git"
+  },
+  "license": "ISC",
+  "author": "GodXero",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+	"serve": "cd app && http-server --cors -c-1 -p 8080",
+    "dev": "nodemon --watch scripts --ext ts --exec \"npm run build\""
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "typescript": "^6.0.2"
+  }
+}

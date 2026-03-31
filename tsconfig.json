@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "./app/js",
+    "rootDir": "./scripts",
+    "target": "ES6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "sourceMap": true
+  },
+  "include": ["scripts/**/*"]
+}
