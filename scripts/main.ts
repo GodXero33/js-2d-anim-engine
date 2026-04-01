@@ -1,3 +1,5 @@
+import { Game } from "./game/game.js";
+
 const canvas = document.getElementById('canvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
@@ -11,17 +13,24 @@ let running = false;
 let animationFrame = -1;
 
 const keys: Record<string, boolean> = {};
+const game = new Game();
 
-function play() {
-  if (running) return;
+function update(deltaTimeSeconds: number) {
+  if (keys['ArrowRight']) {
+    console.log(`Right with ${deltaTimeSeconds}dt`);
+  }
 
-  running = true;
-  animationFrame = requestAnimationFrame(animate);
+  game.update(deltaTimeSeconds);
 }
 
-function pause() {
-  running = false;
-  cancelAnimationFrame(animationFrame);
+function draw() {
+  ctx.clearRect(0, 0, width, height);
+
+  const transform = ctx.getTransform();
+
+  ctx.translate(width * 0.5, height * 0.5);
+  game.draw(ctx);
+  ctx.setTransform(transform);
 }
 
 function animate(time: number) {
@@ -40,17 +49,16 @@ function animate(time: number) {
   animationFrame = requestAnimationFrame(animate);
 }
 
-function update(dt: number) {
-  if (keys['ArrowRight']) {
-    console.log(`Right with ${dt}dt`);
-  }
+function play() {
+  if (running) return;
+
+  running = true;
+  animationFrame = requestAnimationFrame(animate);
 }
 
-function draw() {
-  ctx.clearRect(0, 0, width, height);
-
-  ctx.fillStyle = 'white';
-  ctx.fillRect(50, 50, 100, 100);
+function pause() {
+  running = false;
+  cancelAnimationFrame(animationFrame);
 }
 
 function onResize() {
@@ -89,3 +97,4 @@ function init() {
 }
 
 init();
+setFPS(60);
