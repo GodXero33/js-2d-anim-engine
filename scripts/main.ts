@@ -11,6 +11,7 @@ let lastTime = 0;
 let accumulator = 0;
 let running = false;
 let animationFrame = -1;
+let blurWhileRunning = false;
 
 const keys: Record<string, boolean> = {};
 const game = new Game();
@@ -79,10 +80,21 @@ function onKeyup(event: KeyboardEvent) {
   keys[event.key] = false;
 }
 
+function onBlur() {
+  blurWhileRunning = running;
+  pause();
+}
+
+function onFocus() {
+  if (blurWhileRunning) play();
+}
+
 function bindEvents() {
   window.addEventListener('resize', onResize);
   window.addEventListener('keydown', onKeydown);
   window.addEventListener('keyup', onKeyup);
+  window.addEventListener('blur', onBlur);
+  window.addEventListener('focus', onFocus);
 }
 
 function setFPS(newFPS: number) {
