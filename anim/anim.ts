@@ -1,3 +1,8 @@
+export interface AnimationApplication {
+  draw: (ctx: CanvasRenderingContext2D) => void;
+  update: (deltaTimeSeconds: number)  => void;
+};
+
 type AnimationConstructorOptions = {
   canvas: HTMLCanvasElement | undefined;
 };

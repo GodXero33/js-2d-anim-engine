@@ -1,6 +1,6 @@
 {
   "name": "js-2d-anim-engine",
-  "version": "1.0.0",
+  "version": "2.0.2",
   "description": "",
   "homepage": "https://github.com/GodXero33/js-2d-anim-engine#readme",
   "bugs": {
@@ -17,7 +17,7 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
-	"serve": "cd app && http-server --cors -c-1 -p 8080",
+	"serve": "cd app && http-server --cors -c-1 -p 8081",
     "dev": "nodemon --watch scripts --ext ts --exec \"npm run build\""
   },
   "devDependencies": {
